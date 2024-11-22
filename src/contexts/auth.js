@@ -95,7 +95,7 @@ async function signIn(email, pass){
     }
 }
 
-async function singOut(){
+async function signOut(){
     await AsyncStorage.clear()
     .then(() =>{
         setUser(null);
@@ -103,7 +103,7 @@ async function singOut(){
 }
 
     return(
-        <AuthContext.Provider value={{signed: !!user ,user,signUP, loadingAuth, signIn, loading,singOut}}>
+        <AuthContext.Provider value={{signed: !!user ,user,signUP, loadingAuth, signIn, loading,signOut}}>
             {children}
         </AuthContext.Provider>
     )

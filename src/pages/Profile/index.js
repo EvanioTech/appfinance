@@ -1,16 +1,43 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, Pressable } from "react-native";
+import { Container,
+     Message,
+      Name,
+      NewLink,
+      NewText,
+      LogoutButton,
+      LogoutText
+     } from "./styles";
+import {Header} from '../../components/Header'
+import {AuthContext} from '../../contexts/auth'
 
- export function Sobre(){
+
+
+
+ const Profile = ()=>{
+    const {user, signOut} = useContext(AuthContext)
     const navigation = useNavigation();
     return(
-        <View>
-<Pressable onPress={()=>navigation.openDrawer()}><Text style={{marginTop:200,justifyContent:'center',alignItems:'center'}}>TELA SOBRE</Text></Pressable>
+        <Container>
+            <Header  title="Meu perfil"/>
+            <Message>
+                Hey, bem vindo de volta!
+            </Message>
+            <Name numberOfLines={1}>
+                {user && user.name }
+                </Name>
+                <NewLink onPress={()=> navigation.navigate('Registrar')}>
+                    <NewText> Fazer Registro</NewText>
+                </NewLink>
+
+                <LogoutButton onPress={() => signOut()}>
+                    <LogoutText>Sair</LogoutText>
+                </LogoutButton>
        
-    </View>
+    </Container>
     )
     
 }
 
-export default Sobre;
+export  {Profile};
