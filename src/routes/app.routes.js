@@ -3,7 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Home from "../pages/Home";
 import { New } from "../pages/New";
-import Sobre from "../pages/Sobre";
+import Sobre from "../pages/Profile";
 
 
 const AppDrawer = createDrawerNavigator();

@@ -22,10 +22,19 @@ const BalanceItem = ({data}) => {
         }
 
     }, [data])
+
+     // Formatar o valor de saldo com 2 casas decimais e separadores de milhar
+  const formattedBalance = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(data.saldo);
+
     return(
         <Container bg={labelName.color}>
             <Label> {labelName.label} </Label>
-            <Balance> R$ {data.saldo}</Balance>
+            <Balance>{formattedBalance}</Balance>
         </Container>
     )
 }
