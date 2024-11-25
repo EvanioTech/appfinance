@@ -8,8 +8,9 @@ import { format } from 'date-fns' ;
 import { useIsFocused } from "@react-navigation/native";
 import { BalanceItem } from "../../components/BalanceItem";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, Modal } from "react-native";
 import { HistoricoList } from "../../components/HistoricoList";
+import { CalendarModal } from "../../components/CalendarModal";
 
 
 
@@ -23,6 +24,7 @@ export default function Home(){
     const [dateMovements, setDateMovements] = useState(new Date());
     
     const{ singOut} = useContext(AuthContext);
+    const [modalVisible, setModalVisible] = useState(false);
 
 
     useEffect(()=>{
@@ -91,7 +93,7 @@ export default function Home(){
             />
             <Area>
             
-            <TouchableOpacity style={{marginTop:15}}>
+            <TouchableOpacity style={{marginTop:15}} onPress={()=> setModalVisible(true)}>
             
             <Icon name="event" color='#121212' size={40}/>
                 
@@ -107,6 +109,13 @@ export default function Home(){
             showsVerticalScrollIndicator= {false}
             contentContainerStyle={{paddingBottom:20}}
             />
+
+            <Modal visible={modalVisible} animationType="fade" transparent={true}>
+                <CalendarModal
+                setVisible={()=> setModalVisible(false)}
+                />
+
+            </Modal>
 
            
         </Background>
