@@ -7,6 +7,10 @@ import { Container,
 
 import { View , TouchableWithoutFeedback} from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
+import { ptBR } from "./localeCalendar";
+
+LocaleConfig.locales['pt-br'] = ptBR;
+LocaleConfig.defaultLocale = 'pt-br';
 
 
 const CalendarModal = ({setVisible, handleFilter}) => {
